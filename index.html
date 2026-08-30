@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Benvenuto Chicken</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="bandeira"></div>
+
+    <header>
+        <div class="logo">
+            <span class="verde">BENVENUTO</span>
+            <span class="vermelho">CHICKEN</span> 🍗
+        </div>
+
+        <p>Frango crocante, lanches e combos deliciosos!</p>
+
+        <nav>
+            <button onclick="mostrarCategoria('inicio')">🏠 Início</button>
+            <button onclick="mostrarCategoria('lanches')">🍔 Lanches</button>
+            <button onclick="mostrarCategoria('baldes')">🍗 Baldes</button>
+            <button onclick="mostrarCategoria('combos')">🔥 Combos</button>
+            <button onclick="mostrarCategoria('porcoes')">🍟 Porções</button>
+            <button onclick="mostrarCategoria('molhos')">🥫 Molhos</button>
+            <button onclick="mostrarCategoria('bebidas')">🥤 Bebidas</button>
+            <button onclick="mostrarCategoria('adicionais')">➕ Adicionais</button>
+        </nav>
+    </header>
+
+
+    <!-- INÍCIO -->
+
+    <main>
+
+        <section id="inicio" class="categoria ativa">
+
+            <div class="hero">
+
+                <h1>Benvenuto Chicken 🍗</h1>
+
+                <h2>O sabor que conquista no primeiro pedaço!</h2>
+
+                <p>
+                    Escolha seus lanches, frangos, combos,
+                    porções e bebidas.
+                </p>
+
+                <button
+                    class="botao-principal"
+                    onclick="mostrarCategoria('lanches')">
+                    VER CARDÁPIO
+                </button>
+
+            </div>
+
+            <div class="aviso">
+
+                <strong>📦 Entrega:</strong> R$ 4,00
+
+                <br>
+
+                <strong>🏪 Retirada:</strong> sem taxa
+
+            </div>
+
+        </section>
+
+
+        <!-- LANCHES -->
+
+        <section id="lanches" class="categoria">
+
+            <h2>🍔 Lanches</h2>
+
+            <p class="descricao">
+                Todos os lanches acompanham 1 molho de alho.
+            </p>
+
+            <div id="lista-lanches" class="produtos"></div>
+
+        </section>
+
+
+        <!-- BALDES -->
+
+        <section id="baldes" class="categoria">
+
+            <h2>🍗 Baldes de Frango</h2>
+
+            <p class="descricao">
+                Todo balde de frango acompanha 1 ketchup e 1 barbecue.
+            </p>
+
+            <div id="lista-baldes" class="produtos"></div>
+
+        </section>
+
+
+        <!-- COMBOS -->
+
+        <section id="combos" class="categoria">
+
+            <h2>🔥 Combos</h2>
+
+            <div id="lista-combos" class="produtos"></div>
+
+        </section>
+
+
+        <!-- PORÇÕES -->
+
+        <section id="porcoes" class="categoria">
+
+            <h2>🍟 Porções e Especiais</h2>
+
+            <div id="lista-porcoes" class="produtos"></div>
+
+        </section>
+
+
+        <!-- MOLHOS -->
+
+        <section id="molhos" class="categoria">
+
+            <h2>🥫 Molhos</h2>
+
+            <div id="lista-molhos" class="produtos"></div>
+
+        </section>
+
+
+        <!-- BEBIDAS -->
+
+        <section id="bebidas" class="categoria">
+
+            <h2>🥤 Bebidas</h2>
+
+            <div id="lista-bebidas" class="produtos"></div>
+
+        </section>
+
+
+        <!-- ADICIONAIS -->
+
+        <section id="adicionais" class="categoria">
+
+            <h2>➕ Adicionais para Lanche</h2>
+
+            <div id="lista-adicionais" class="produtos"></div>
+
+        </section>
+
+    </main>
+
+
+    <!-- BOTÃO DO CARRINHO -->
+
+    <button class="carrinho-fixo" onclick="abrirCarrinho()">
+
+        🛒 MEU PEDIDO
+
+        <span id="quantidadeCarrinho">0</span>
+
+    </button>
+
+
+    <!-- JANELA DO CARRINHO -->
+
+    <div id="carrinhoModal" class="modal">
+
+        <div class="modal-conteudo">
+
+            <button class="fechar" onclick="fecharCarrinho()">
+                ✕
+            </button>
+
+            <h2>🛒 Meu Pedido</h2>
+
+            <div id="itensCarrinho"></div>
+
+
+            <div class="resumo">
+
+                <p>
+                    Subtotal:
+                    <strong id="subtotal">R$ 0,00</strong>
+                </p>
+
+                <p>
+                    Entrega:
+                    <strong id="valorEntrega">R$ 4,00</strong>
+                </p>
+
+                <h3>
+                    TOTAL:
+                    <span id="total">R$ 4,00</span>
+                </h3>
+
+            </div>
+
+
+            <!-- ENTREGA OU RETIRADA -->
+
+            <h3>Como deseja receber?</h3>
+
+            <div class="opcoes-entrega">
+
+                <button
+                    id="botaoEntrega"
+                    class="selecionado"
+                    onclick="escolherEntrega('entrega')">
+
+                    🚚
+
+                    <strong>ENTREGA</strong>
+
+                    <small>
+                        + R$ 4,00
+                    </small>
+
+                </button>
+
+
+                <button
+                    id="botaoRetirada"
+                    onclick="escolherEntrega('retirada')">
+
+                    🏪
+
+                    <strong>RETIRADA</strong>
+
+                    <small>
+                        Sem taxa
+                    </small>
+
+                </button>
+
+            </div>
+
+
+            <div class="campo">
+
+                <label>Seu nome</label>
+
+                <input
+                    id="nomeCliente"
+                    type="text"
+                    placeholder="Digite seu nome">
+
+            </div>
+
+
+            <div
+                id="campoEndereco"
+                class="campo">
+
+                <label>Endereço para entrega</label>
+
+                <textarea
+                    id="endereco"
+                    placeholder="Rua, número e bairro">
+                </textarea>
+
+            </div>
+
+
+            <div class="campo">
+
+                <label>Observações</label>
+
+                <textarea
+                    id="observacoes"
+                    placeholder="Ex.: sem cebola">
+                </textarea>
+
+            </div>
+
+
+            <button
+                class="botao-whatsapp"
+                onclick="enviarWhatsApp()">
+
+                📲 ENVIAR PEDIDO PELO WHATSAPP
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <footer>
+
+        <h2>Benvenuto Chicken 🍗</h2>
+
+        <p>
+            WhatsApp: (44) 99732-3438
+        </p>
+
+        <div class="cores">
+            <span class="verde"></span>
+            <span class="branco"></span>
+            <span class="vermelho"></span>
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
